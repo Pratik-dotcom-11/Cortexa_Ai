@@ -654,7 +654,12 @@ app.delete('/api/study-plans/:id', requireAuth, async (req: AuthRequest, res: Re
 async function bootstrap() {
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        // The host preview serves this Express process without a Vite HMR
+        // WebSocket, so prevent Vite from injecting a client that retries it.
+        hmr: false,
+      },
       appType: 'spa',
     });
     app.use(vite.middlewares);
