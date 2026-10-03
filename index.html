@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#090d16" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Cortexa - Intelligent AI Study Partner</title>
+    <meta name="description" content="Cortexa is the next-generation AI study partner for university students with grounded multimodal reasoning, flashcard spaced repetition, interactive diagnostics, and smart academic schedules." />
+    <meta property="og:title" content="Cortexa - Intelligent AI Study Partner" />
+    <meta property="og:description" content="Master courses faster with grounded AI, active recall diagnostics, and automated notes processing." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Immediate Theme Initialization script to avoid any flash of unstyled theme -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('cortexa_theme');
+          var isDark = saved ? saved === 'dark' : (!window.matchMedia || !window.matchMedia('(prefers-color-scheme: light)').matches);
+          var root = document.documentElement;
+          if (isDark) {
+            root.classList.add('dark');
+            root.classList.remove('light');
+            root.style.colorScheme = 'dark';
+            root.setAttribute('data-theme', 'dark');
+          } else {
+            root.classList.add('light');
+            root.classList.remove('dark');
+            root.style.colorScheme = 'light';
+            root.setAttribute('data-theme', 'light');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#f8f9fd] text-[#172033] dark:bg-[#090d16] dark:text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white overscroll-none transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

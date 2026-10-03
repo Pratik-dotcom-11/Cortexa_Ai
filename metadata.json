@@ -1,0 +1,6 @@
+{
+  "name": "Cortexa",
+  "description": "AI-powered personal study assistant for university students with document processing, summaries, quizzes, flashcards, multi-level explanations, and personalized study plans.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
