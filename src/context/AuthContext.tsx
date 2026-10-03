@@ -3,6 +3,7 @@ import {
   User as FirebaseUser,
   onAuthStateChanged,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
 } from 'firebase/auth';
 import { auth, googleAuthProvider } from '../lib/firebase.ts';
@@ -216,7 +217,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setAuthError(null);
 
     try {
-      const cred = await signInWithPopup(auth, googleAuthProvider);
+      let cred;
+      try {
+        cred = await signInWithPopup(auth, googleAuthProvider);
+      } catch (error: any) {
+        const code = String(error?.code || '');
+        if (code === 'auth/popup-blocked' || code === 'auth/operation-not-supported-in-this-environment') {
+          await signInWithRedirect(auth, googleAuthProvider);
+          return;
+        }
+        throw error;
+      }
+
       if (cred.user) {
         const token = await cred.user.getIdToken();
         const res = await fetch('/api/auth/sync', {
