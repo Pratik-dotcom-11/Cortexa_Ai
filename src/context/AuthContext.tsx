@@ -5,7 +5,7 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
-import { auth, googleAuthProvider } from '../lib/firebase.ts';
+import { auth, googleAuthProvider, syncUserProfileToFirestore } from '../lib/firebase.ts';
 import { UserProfile } from '../types/app.types.ts';
 
 interface AuthUser {
@@ -172,6 +172,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
               const user = raw?.data?.user || raw?.user || raw?.data || raw;
               setProfile(user);
             }
+            await syncUserProfileToFirestore(fUser);
           } catch (err) {
             console.warn('Firebase user sync failed:', err);
           }
@@ -235,6 +236,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           const user = raw?.data?.user || raw?.user || raw?.data || raw;
           setProfile(user);
         }
+        await syncUserProfileToFirestore(cred.user);
       }
     } catch (error: any) {
       const code = String(error?.code || '');

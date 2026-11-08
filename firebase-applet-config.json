@@ -3,6 +3,7 @@
   "appId": "1:105512080052:web:0fab4e7eb11f3f284c3de1",
   "apiKey": "AIzaSyBfqaA2YE2Frja5Ya85i4LjXNTHdISW7R0",
   "authDomain": "resolute-artifact-2t8c4.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-cortexa-0fda3fa6-f0cd-492b-ba3c-2f6fe559634f",
   "storageBucket": "resolute-artifact-2t8c4.firebasestorage.app",
   "messagingSenderId": "105512080052",
   "measurementId": "",
